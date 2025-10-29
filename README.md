@@ -32,23 +32,24 @@ The following images show the real-time execution from both the attacker's (Red 
 
 ### Red Team: Nmap Scan Output
 
-The Nmap command used was a highly customized scan combining multiple techniques (`-sS`, `-sU`, `-T4`, `-A`, script discovery) to aggressively map the target. The Zenmap output shows the discovery of other hosts on the network.
+The Nmap command used was a highly customized scan combining multiple techniques. The Zenmap output shows the scan beginning, specifically stating "Initiating SYN Stealth Scan" and "Initiating UDP scan," which are the actions that will be detected by the IDS.
 
 <p align="center">
-  <img src=".assets/Zenmap discovery.jpg" alt="Zenmap host discovery output" width="800"/>
+  <img src=".assets/Zenmap output.jpg" alt="Zenmap scan output" width="800"/>
 </p>
-<p align="center">Figure 2: Zenmap output showing initial host discovery on the network.</p>
+<p align="center">Figure 2: Zenmap terminal output showing the initiation of stealthy port scans.</p>
 
 ### Blue Team: Suricata Log Analysis
 
-This terminal shows the real-time `tail -f` of Suricata's `fast.log`. As the Nmap scan progressed, Suricata successfully identified and logged multiple "ET SCAN Suspicious inbound" events, correctly classifying the probes to database ports like MySQL, PostgreSQL, and MSSQL.
+This terminal shows the real-time `tail -f` of Suricata's `fast.log`. As the Nmap scan progressed, Suricata successfully identified and logged multiple "ET SCAN Suspicious inbound" events,
+correctly classifying the probes to database ports like MySQL, PostgreSQL, and MSSQL.
 
 <p align="center">
   <img src=".assets/Suricata Logs.jpg" alt="Suricata alert logs" width="800"/>
 </p>
 <p align="center">Figure 3: Suricata's `fast.log` detecting the Nmap scan in real-time.</p>
 
-## ⚙️ Key Configuration & Code
+##  Key Configuration & Code
 
 This scenario is broken into the Red Team command used to initiate the scan and the Blue Team log file showing the detection.
 
